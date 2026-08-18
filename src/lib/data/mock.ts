@@ -1,0 +1,340 @@
+import type {
+  Director,
+  Film,
+  FestivalYear,
+  Partner,
+  Screening,
+  SiteSettings,
+  Sponsor,
+  TeamMember,
+  Venue,
+} from "../types";
+
+const img = (id: string, w: number) =>
+  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=60`;
+
+const savoyTickets = [
+  { id: "standard", name: "Standard Seat", quantity: 112, price: 13.5 },
+  { id: "luxury", name: "Luxury Seat", quantity: 27, price: 15 },
+  { id: "sofa", name: "Sofa", quantity: 10, price: 30 },
+  { id: "low-income", name: "Low Income", quantity: 20, price: 8.5 },
+];
+
+const savoySeating = {
+  total: 169,
+  standard: 112,
+  luxury: 27,
+  sofas: 10,
+  lowIncome: 20,
+};
+
+export const directors: Director[] = [
+  {
+    _id: "dir-1",
+    name: "Georgia Scott & Sophia Scott",
+    bio: "British filmmakers whose documentary portrait of Marwan Barghouti has screened at Palestinian film festivals worldwide.",
+    headshot: img("photo-1494790108377-be9c29b29330", 160),
+    filmography: ["Tomorrow's Freedom"],
+  },
+  {
+    _id: "dir-2",
+    name: "Cherien Dabis",
+    bio: "Palestinian American filmmaker and actor, known for Amreeka and for bringing Palestinian family stories to an international audience.",
+    headshot: img("photo-1573496359142-b8d87734a5a2", 160),
+    filmography: ["Amreeka", "May in the Summer", "All That's Left of You"],
+  },
+  {
+    _id: "dir-3",
+    name: "Josh Baker",
+    bio: "Documentary director whose work with Louis Theroux examines power, belief, and the consequences of occupation.",
+    headshot: img("photo-1472099645785-5658abf4ff4e", 160),
+    filmography: ["Louis Theroux: The Settlers"],
+  },
+  {
+    _id: "dir-4",
+    name: "Annemarie Jacir",
+    bio: "Award-winning director and writer, co-founder of the Palestine Film Institute.",
+    headshot: img("photo-1438761681033-6461ffad8d80", 160),
+    filmography: ["Wajib", "When I Saw You", "Palestine 36"],
+  },
+  {
+    _id: "dir-5",
+    name: "Poh Si Teng",
+    bio: "Journalist and documentary filmmaker whose work follows doctors and civilians caught in the machinery of war.",
+    headshot: img("photo-1580489944761-15a19d654956", 160),
+    filmography: ["American Doctor"],
+  },
+];
+
+export const venues: Venue[] = [
+  {
+    _id: "venue-1",
+    slug: "savoy",
+    name: "The Savoy, Heaton Moor",
+    address: "Heaton Moor, Stockport SK4 4NZ",
+    description:
+      "A beloved independent cinema in Heaton Moor, offering an intimate screening experience with a rich local history.",
+    travelInfo:
+      "Heaton Chapel station (Northern) — 8 min walk. Bus routes 197, 203 stop nearby on Heaton Moor Road.",
+    accessibilityInfo:
+      "Step-free access via side entrance. Reserved seating available on request. Hearing loop installed in main auditorium.",
+    parkingInfo: "Free street parking on surrounding roads; limited spaces after 6pm.",
+    contact: { phone: "0161 432 3232", email: "info@savoycinema.co.uk" },
+    gallery: [img("photo-1489599849927-2ee91cede3ba", 640), img("photo-1517604931442-7e0c8ed2963c", 640)],
+    seating: savoySeating,
+    ticketTypes: savoyTickets,
+  },
+  {
+    _id: "venue-2",
+    slug: "northern-light-sale",
+    name: "Northern Light Cinema Sale",
+    address: "School Road, Sale M33 7XY",
+    description:
+      "A community-focused cinema space in Sale, known for its welcoming atmosphere and diverse programming.",
+    travelInfo: "Sale Metrolink stop — 5 min walk. Bus routes 41, 263 serve School Road.",
+    accessibilityInfo:
+      "Fully step-free. Elevator access to all floors. Wheelchair spaces in every screen.",
+    parkingInfo: "Multi-storey car park on School Road, 2 min walk.",
+    contact: { phone: "0161 976 2000", email: "sale@northernlightcinema.co.uk" },
+    gallery: [img("photo-1594909128353-5662fa9836db", 640), img("photo-1574267432644-f6102b936d50", 640)],
+  },
+  {
+    _id: "venue-3",
+    slug: "northern-light-stretford",
+    name: "Northern Light Cinema Stretford",
+    address: "Chester Road, Stretford M32 0QW",
+    description:
+      "Northern Light's Stretford venue brings independent cinema to Trafford with a focus on world and festival programming.",
+    travelInfo: "Stretford Metrolink stop — 3 min walk. Bus routes 53, 84 along Chester Road.",
+    accessibilityInfo:
+      "Step-free access throughout. Accessible toilets on ground floor. Companion seats available.",
+    parkingInfo: "Free parking at adjacent retail park after 6pm.",
+    contact: { phone: "0161 876 3000", email: "stretford@northernlightcinema.co.uk" },
+    gallery: [img("photo-1536440136628-849c177e76a1", 640), img("photo-1440404653325-ab127d49abc1", 640)],
+  },
+];
+
+export const films: Film[] = [
+  {
+    _id: "film-1",
+    slug: "tomorrows-freedom",
+    title: "Tomorrow's Freedom",
+    synopsis:
+      "A portrait of Palestinian political leader Marwan Barghouti, often described as Palestine's Nelson Mandela, serving life sentences in an Israeli prison. Told through his wife Fadwa and their children, the film traces his political life, imprisonment, family visits, and the campaign for his release — revealing a man whose dream of Palestinian liberation remains unshaken.",
+    director: directors[0],
+    country: "United Kingdom",
+    runtime: 97,
+    genreTags: ["Documentary"],
+    poster: img("photo-1535016120720-40c646be5580", 480),
+    still: img("photo-1518676590629-95dc305d0e94", 1280),
+    featured: true,
+    hook: "An intimate portrait of Marwan Barghouti, Palestine's best-known political prisoner.",
+    festivalYear: 2026,
+  },
+  {
+    _id: "film-2",
+    slug: "all-thats-left-of-you",
+    title: "All That's Left of You",
+    synopsis:
+      "When a Palestinian teenager is caught in a West Bank protest, his mother begins to tell the story of their family. Cherien Dabis's sweeping drama spans three generations from the 1948 Nakba to the present, tracing dispossession, love, and the stubborn work of survival.",
+    director: directors[1],
+    country: "Palestine / Jordan / Germany",
+    runtime: 146,
+    genreTags: ["Drama"],
+    poster: img("photo-1478720568477-152d9b164e26", 480),
+    still: img("photo-1489599849927-2ee91cede3ba", 1280),
+    featured: true,
+    hook: "Three generations of a Palestinian family, from the Nakba to now.",
+    festivalYear: 2026,
+  },
+  {
+    _id: "film-3",
+    slug: "the-settlers",
+    title: "The Settlers",
+    synopsis:
+      "Fourteen years after his first visit, Louis Theroux returns to the occupied West Bank to meet the growing community of religious-nationalist Israeli settlers. Directed by Josh Baker, the film follows settler leaders, including Daniella Weiss, and the Palestinian communities living with the consequences of expansion that is illegal under international law.",
+    director: directors[2],
+    country: "United Kingdom",
+    runtime: 61,
+    genreTags: ["Documentary"],
+    poster: img("photo-1598899134739-24c46f58b8c0", 480),
+    still: img("photo-1517604931442-7e0c8ed2963c", 1280),
+    featured: true,
+    hook: "Louis Theroux returns to the West Bank to confront a settler movement no longer on the fringe.",
+    festivalYear: 2026,
+  },
+  {
+    _id: "film-4",
+    slug: "palestine-36",
+    title: "Palestine 36",
+    synopsis:
+      "Annemarie Jacir's historical epic returns to 1936, as the Arab revolt against British Mandate rule gathers in a Palestinian village. With an ensemble including Hiam Abbass and Saleh Bakri, and restored colourised archive woven through the drama, it is a stirring account of land, resistance, and a history too often told from 1948 onwards.",
+    director: directors[3],
+    country: "Palestine / United Kingdom / France",
+    runtime: 120,
+    genreTags: ["Drama", "History"],
+    poster: img("photo-1440404653325-ab127d49abc1", 480),
+    still: img("photo-1574267432644-f6102b936d50", 1280),
+    featured: true,
+    hook: "The 1936 revolt, restored to the screen — Palestine before 1948.",
+    festivalYear: 2026,
+  },
+  {
+    _id: "film-5",
+    slug: "american-doctor",
+    title: "American Doctor",
+    synopsis:
+      "Three American physicians — Palestinian, Jewish, and Zoroastrian — volunteer in Gaza's Nasser Medical Complex, then return home to testify in the halls of Congress. Poh Si Teng's documentary follows their work under siege and the question that follows them back: what they have done, and what they have not.",
+    director: directors[4],
+    country: "United States / Palestine",
+    runtime: 93,
+    genreTags: ["Documentary"],
+    poster: img("photo-1507679799987-c73779587ccf", 480),
+    still: img("photo-1594909128353-5662fa9836db", 1280),
+    featured: true,
+    hook: "Three American doctors in Gaza — and the fight they bring home.",
+    festivalYear: 2026,
+  },
+];
+
+export const screenings: Screening[] = [
+  {
+    _id: "scr-1",
+    filmId: "film-1",
+    venueId: "venue-1",
+    date: "2026-10-09",
+    time: "19:30",
+    ticketState: "available",
+    qanda: false,
+    seating: savoySeating,
+    ticketTypes: savoyTickets,
+    externalBookingUrl: "https://example.com/tickets",
+  },
+  {
+    _id: "scr-2",
+    filmId: "film-2",
+    venueId: "venue-3",
+    date: "2026-10-19",
+    time: "19:30",
+    ticketState: "available",
+    qanda: false,
+    screen: "Red",
+    seating: { total: 59 },
+    externalBookingUrl: "https://example.com/tickets",
+  },
+  {
+    _id: "scr-3",
+    filmId: "film-3",
+    venueId: "venue-1",
+    date: "2026-10-23",
+    time: "19:30",
+    ticketState: "available",
+    qanda: false,
+    seating: savoySeating,
+    ticketTypes: savoyTickets,
+    externalBookingUrl: "https://example.com/tickets",
+  },
+  {
+    _id: "scr-4",
+    filmId: "film-4",
+    venueId: "venue-2",
+    date: "2026-10-24",
+    time: "19:30",
+    ticketState: "available",
+    qanda: false,
+    screen: "Green",
+    seating: { total: 54 },
+    externalBookingUrl: "https://example.com/tickets",
+  },
+  {
+    _id: "scr-5",
+    filmId: "film-5",
+    venueId: "venue-1",
+    date: "2026-10-30",
+    time: "19:30",
+    ticketState: "available",
+    qanda: false,
+    seating: savoySeating,
+    ticketTypes: savoyTickets,
+    externalBookingUrl: "https://example.com/tickets",
+  },
+];
+
+export const siteSettings: SiteSettings = {
+  festivalDates: { start: "2026-10-09", end: "2026-10-30" },
+  heroImage: img("photo-1489599849927-2ee91cede3ba", 1280),
+  ctaLabel: "View Programme",
+  ctaLink: "/program",
+  featuredFilmIds: ["film-1", "film-2", "film-3", "film-4", "film-5"],
+};
+
+export const sponsors: Sponsor[] = [
+  { _id: "sp-1", name: "Arts Council England", logo: img("photo-1560179707-f14e90ef3623", 200), url: "https://example.com" },
+  { _id: "sp-2", name: "Manchester City Council", logo: img("photo-1557804506-669a67965ba0", 200), url: "https://example.com" },
+];
+
+export const partners: Partner[] = [
+  { _id: "pt-1", name: "Palestine Film Institute", logo: img("photo-1556761175-5973dc0f32e7", 200), url: "https://example.com" },
+  { _id: "pt-2", name: "HOME Manchester", logo: img("photo-1559136555-9303baea8ebd", 200), url: "https://example.com" },
+];
+
+export const teamMembers: TeamMember[] = [
+  { name: "Sarah Ahmed", role: "Festival Director", photo: img("photo-1573496359142-b8d87734a5a2", 256) },
+  { name: "James Morrison", role: "Programme Curator", photo: img("photo-1560250097-0b93528c311a", 256) },
+  { name: "Layla Hassan", role: "Community Outreach", photo: img("photo-1580489944761-15a19d654956", 256) },
+];
+
+export const festivalYears: FestivalYear[] = [
+  {
+    year: 2025,
+    dates: { start: "2025-11-08", end: "2025-11-11" },
+    summaryStats: { attendance: 2400, films: 18, venues: 3, soldOutScreenings: 6 },
+    linkedFilmIds: [],
+    linkedPress: [
+      { title: "Manchester Evening News — A vital window into Palestinian cinema", url: "https://example.com" },
+    ],
+  },
+  {
+    year: 2024,
+    dates: { start: "2024-11-09", end: "2024-11-12" },
+    summaryStats: { attendance: 1800, films: 15, venues: 2, soldOutScreenings: 4 },
+    linkedFilmIds: [],
+  },
+];
+
+export const allGenres = [...new Set(films.flatMap((f) => f.genreTags))].sort();
+
+function venueById(id: string) {
+  return venues.find((v) => v._id === id);
+}
+
+export function getFilmBySlug(slug: string) {
+  return films.find((f) => f.slug === slug);
+}
+
+export function getFeaturedFilms() {
+  return siteSettings.featuredFilmIds
+    .map((id) => films.find((f) => f._id === id))
+    .filter((f): f is Film => Boolean(f));
+}
+
+export function getScreeningsForFilm(filmId: string) {
+  return screenings
+    .filter((s) => s.filmId === filmId)
+    .map((s) => ({ ...s, venue: venueById(s.venueId)! }))
+    .filter((s) => s.venue);
+}
+
+export function getAllScreeningsWithFilms() {
+  return screenings.map((s) => ({
+    ...s,
+    film: films.find((f) => f._id === s.filmId)!,
+    venue: venueById(s.venueId)!,
+  }));
+}
+
+export function getRelatedFilms(film: Film, limit = 4) {
+  return films
+    .filter((f) => f._id !== film._id && f.genreTags.some((g) => film.genreTags.includes(g)))
+    .slice(0, limit);
+}

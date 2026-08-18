@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-yellow: #fff4b8;
+  --color-burgundy: #8b0000;
+  --color-charcoal: #0d0f11;
+  --color-card-slate: #161a1e;
+
+  --font-display: var(--font-fira-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply bg-charcoal text-white font-body antialiased;
+  }
+
+  ::selection {
+    @apply bg-burgundy text-white;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand-yellow;
+  }
+}
+
+@layer utilities {
+  .container-site {
+    @apply mx-auto w-full max-w-[1440px] px-5 md:px-10 xl:px-20;
+  }
+
+  .section-spacing {
+    @apply py-8 md:py-12 xl:py-24;
+  }
+
+  .poster-aspect {
+    aspect-ratio: 2 / 3;
+  }
+
+  .still-aspect {
+    aspect-ratio: 16 / 9;
+  }
+}
