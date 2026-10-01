@@ -125,8 +125,12 @@ export const films: Film[] = [
     country: "United Kingdom",
     runtime: 97,
     genreTags: ["Documentary"],
-    poster: img("photo-1535016120720-40c646be5580", 480),
-    still: img("photo-1518676590629-95dc305d0e94", 1280),
+    poster: "/films/tomorrows-freedom-poster.jpg",
+    still: "/films/tomorrows-freedom-still.jpg",
+    stills: [
+      "/films/tomorrows-freedom-still-2.jpg",
+      "/films/tomorrows-freedom-still-3.jpg",
+    ],
     featured: true,
     hook: "An intimate portrait of Marwan Barghouti, Palestine's best-known political prisoner.",
     festivalYear: 2026,
@@ -141,8 +145,12 @@ export const films: Film[] = [
     country: "Palestine / Jordan / Germany",
     runtime: 146,
     genreTags: ["Drama"],
-    poster: img("photo-1478720568477-152d9b164e26", 480),
-    still: img("photo-1489599849927-2ee91cede3ba", 1280),
+    poster: "/films/all-thats-left-poster.jpg",
+    still: "/films/all-thats-left-still.jpg",
+    stills: [
+      "/films/all-thats-left-still-2.jpg",
+      "/films/all-thats-left-still-3.jpg",
+    ],
     featured: true,
     hook: "Three generations of a Palestinian family, from the Nakba to now.",
     festivalYear: 2026,
@@ -157,8 +165,12 @@ export const films: Film[] = [
     country: "United Kingdom",
     runtime: 61,
     genreTags: ["Documentary"],
-    poster: img("photo-1598899134739-24c46f58b8c0", 480),
-    still: img("photo-1517604931442-7e0c8ed2963c", 1280),
+    poster: "/films/the-settlers-poster.jpg",
+    still: "/films/the-settlers-still.jpg",
+    stills: [
+      "/films/the-settlers-still-2.jpg",
+      "/films/the-settlers-still-3.jpg",
+    ],
     featured: true,
     hook: "Louis Theroux returns to the West Bank to confront a settler movement no longer on the fringe.",
     festivalYear: 2026,
@@ -173,8 +185,9 @@ export const films: Film[] = [
     country: "Palestine / United Kingdom / France",
     runtime: 120,
     genreTags: ["Drama", "History"],
-    poster: img("photo-1440404653325-ab127d49abc1", 480),
-    still: img("photo-1574267432644-f6102b936d50", 1280),
+    poster: "/films/palestine-36-poster.jpg",
+    still: "/films/palestine-36-still.jpg",
+    stills: ["/films/palestine-36-still-2.jpg"],
     featured: true,
     hook: "The 1936 revolt, restored to the screen — Palestine before 1948.",
     festivalYear: 2026,
@@ -189,8 +202,12 @@ export const films: Film[] = [
     country: "United States / Palestine",
     runtime: 93,
     genreTags: ["Documentary"],
-    poster: img("photo-1507679799987-c73779587ccf", 480),
-    still: img("photo-1594909128353-5662fa9836db", 1280),
+    poster: "/films/american-doctor-poster.jpg",
+    still: "/films/american-doctor-still.jpg",
+    stills: [
+      "/films/american-doctor-still-2.jpg",
+      "/films/american-doctor-still-3.jpg",
+    ],
     featured: true,
     hook: "Three American doctors in Gaza — and the fight they bring home.",
     festivalYear: 2026,
@@ -262,7 +279,7 @@ export const screenings: Screening[] = [
 
 export const siteSettings: SiteSettings = {
   festivalDates: { start: "2026-10-09", end: "2026-10-30" },
-  heroImage: img("photo-1489599849927-2ee91cede3ba", 1280),
+  heroImage: "/films/palestine-36-still.jpg",
   ctaLabel: "View Programme",
   ctaLink: "/program",
   featuredFilmIds: ["film-1", "film-2", "film-3", "film-4", "film-5"],
@@ -299,6 +316,32 @@ export const festivalYears: FestivalYear[] = [
     dates: { start: "2024-11-09", end: "2024-11-12" },
     summaryStats: { attendance: 1800, films: 15, venues: 2, soldOutScreenings: 4 },
     linkedFilmIds: [],
+    archiveScreenings: [
+      {
+        title: "The Teacher",
+        certificate: "18",
+        datetimeLabel: "Friday 10th May - 20:00",
+        details:
+          "Q&A facilitated by Professor Anadi Ramamurthy, author of 'Struggling to be seen: The travails of Palestinian cinema'. The book explores the challenges Palestinian filmmakers confront to develop a cinema that gives expression to the national narrative.",
+      },
+      {
+        title: "Gaza Fights for Freedom",
+        certificate: "18",
+        datetimeLabel: "Saturday 18th May - 20:00",
+        details:
+          "Including Q&A with Director Abby Martin (virtual session); facilitated by Mohammed Ghalayini, an atmospheric scientist and co-founder of Amplify Gaza Stories, which works to support the resilience of people in Gaza through community-led projects.",
+      },
+      {
+        title: "200 Meters",
+        certificate: "15",
+        datetimeLabel: "Friday 31st May - 20:00",
+        details:
+          "Dr Ruth Abou Rached is a Lecturer in Arabic Cultural Studies for the Department of Arabic and Middle Eastern Studies, The University of Manchester. Dr Louis Brehony is author of the book Palestinian Music in Exile: Voices of Resistance and director of the award-winning film Kofia: A Revolution Through Music. An independent scholar and writer on culture, aesthetics and resistance, his work focuses on Palestine, Ireland and histories of anticolonial musicianship.",
+      },
+    ],
+    linkedPress: [
+      { title: "Watch the 2024 archive video", url: "https://www.youtube.com/watch?v=bqO0Z2kVLdk" },
+    ],
   },
 ];
 

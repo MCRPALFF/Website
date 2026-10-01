@@ -101,6 +101,12 @@ export interface FestivalYear {
   };
   linkedFilmIds: string[];
   linkedPress?: { title: string; url: string }[];
+  archiveScreenings?: {
+    title: string;
+    certificate?: string;
+    datetimeLabel: string;
+    details?: string;
+  }[];
 }
 
 export interface SiteSettings {

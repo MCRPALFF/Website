@@ -75,6 +75,24 @@ export default function ArchivePage() {
                 </div>
               )}
 
+              {edition.archiveScreenings && edition.archiveScreenings.length > 0 && (
+                <div className="mt-10">
+                  <h3 className="text-lg font-semibold text-brand-yellow">Screenings</h3>
+                  <ul className="mt-4 space-y-4">
+                    {edition.archiveScreenings.map((item) => (
+                      <li key={`${item.title}-${item.datetimeLabel}`} className="rounded-[4px] bg-card-slate p-4">
+                        <p className="text-base font-semibold text-white">
+                          {item.title}
+                          {item.certificate ? ` (${item.certificate})` : ""}
+                        </p>
+                        <p className="mt-1 text-sm text-brand-yellow">{item.datetimeLabel}</p>
+                        {item.details && <p className="mt-2 text-sm leading-relaxed text-white/75">{item.details}</p>}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
               {edition.linkedPress && edition.linkedPress.length > 0 && (
                 <div className="mt-10">
                   <h3 className="text-lg font-semibold text-brand-yellow">Press Coverage</h3>
