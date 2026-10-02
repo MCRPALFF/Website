@@ -1,7 +1,8 @@
+import type { MetadataRoute } from "next";
 import { getAllFilms } from "@/lib/queries";
 
-export default function sitemap() {
-  const baseUrl = "https://mcrpalff.org";
+export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://mcrpalff.org";
   const films = getAllFilms();
 
   const staticRoutes = ["", "/program", "/venues", "/about", "/archive", "/get-involved"].map(

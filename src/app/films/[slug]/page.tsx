@@ -17,10 +17,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: film.title,
     description: film.hook || film.synopsis.slice(0, 160),
+    alternates: {
+      canonical: `/films/${film.slug}`,
+    },
     openGraph: {
       title: film.title,
       description: film.hook || film.synopsis.slice(0, 160),
+      url: `https://mcrpalff.org/films/${film.slug}`,
       images: [{ url: film.still || film.poster }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: film.title,
+      description: film.hook || film.synopsis.slice(0, 160),
+      images: [film.still || film.poster],
     },
   };
 }

@@ -26,10 +26,27 @@ export const metadata: Metadata = {
   description:
     "Manchester's celebration of Palestinian cinema — stories that matter, screened across the city.",
   metadataBase: new URL("https://mcrpalff.org"),
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
     type: "website",
     locale: "en_GB",
     siteName: "MCR Palestine Film Festival",
+    title: "MCR Palestine Film Festival",
+    description:
+      "Manchester's celebration of Palestinian cinema — stories that matter, screened across the city.",
+    url: "https://mcrpalff.org",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MCR Palestine Film Festival",
+    description:
+      "Manchester's celebration of Palestinian cinema — stories that matter, screened across the city.",
   },
 };
 
@@ -41,6 +58,18 @@ export default function RootLayout({
   return (
     <html lang="en-GB" className={`${firaSans.variable} ${sourceSans.variable}`}>
       <body className="flex min-h-screen flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "MCR Palestine Film Festival",
+              url: "https://mcrpalff.org",
+              sameAs: [],
+            }),
+          }}
+        />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

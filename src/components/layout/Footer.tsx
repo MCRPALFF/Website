@@ -1,8 +1,12 @@
 import Link from "next/link";
 import { Logo } from "./Logo";
 import { navLinks } from "@/lib/nav";
+import { TurnstileField } from "@/components/forms/TurnstileField";
+import { ObfuscatedEmail } from "@/components/ui/ObfuscatedEmail";
 
 export function Footer() {
+  const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+
   return (
     <footer className="border-t border-white/10 bg-card-slate">
       <div className="container-site section-spacing">
@@ -36,9 +40,7 @@ export function Footer() {
             </h2>
             <ul className="space-y-2 text-sm text-white/70">
               <li>
-                <a href="mailto:info@mcrpalff.org" className="hover:text-burgundy">
-                  info@mcrpalff.org
-                </a>
+                <ObfuscatedEmail user="info" domain="mcrpalff.org" className="hover:text-burgundy" />
               </li>
             </ul>
           </div>
@@ -48,6 +50,10 @@ export function Footer() {
               Newsletter
             </h2>
             <form className="flex flex-col gap-2" action="/api/newsletter" method="post">
+              <div className="hidden" aria-hidden="true">
+                <label htmlFor="footer-website">Website</label>
+                <input id="footer-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+              </div>
               <label htmlFor="footer-email" className="sr-only">
                 Email address
               </label>
@@ -59,6 +65,7 @@ export function Footer() {
                 placeholder="you@example.com"
                 className="rounded-[4px] border border-white/20 bg-charcoal px-4 py-2 text-sm text-white placeholder:text-white/40 focus:border-brand-yellow focus:outline-none"
               />
+              <TurnstileField siteKey={turnstileSiteKey} />
               <button
                 type="submit"
                 className="rounded-[4px] bg-brand-yellow px-4 py-2 text-sm font-semibold uppercase tracking-[0.04em] text-charcoal"

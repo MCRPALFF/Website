@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/layout/PageHero";
+import { TurnstileField } from "@/components/forms/TurnstileField";
 
 export const metadata: Metadata = {
   title: "Get Involved",
@@ -60,12 +61,20 @@ function FormSection({
   description: string;
   children: React.ReactNode;
 }) {
+  const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+
   return (
     <section id={id} className="scroll-mt-24 rounded-[4px] bg-card-slate p-8">
       <h2 className="text-xl font-bold text-brand-yellow">{title}</h2>
       <p className="mt-2 text-sm text-white/70">{description}</p>
-      <form className="mt-6 space-y-4" action={`/api/${id}`} method="post">
+      <form className="mt-6 space-y-4" action="/api/involvement" method="post">
+        <input type="hidden" name="formType" value={id} />
+        <div className="hidden" aria-hidden="true">
+          <label htmlFor={`${id}-website`}>Website</label>
+          <input id={`${id}-website`} name="website" type="text" tabIndex={-1} autoComplete="off" />
+        </div>
         {children}
+        <TurnstileField siteKey={turnstileSiteKey} />
         <button
           type="submit"
           className="rounded-[4px] bg-brand-yellow px-6 py-3 text-[15px] font-semibold uppercase tracking-[0.04em] text-charcoal"
@@ -78,6 +87,8 @@ function FormSection({
 }
 
 export default function GetInvolvedPage() {
+  const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+
   return (
     <>
       <PageHero
@@ -162,6 +173,10 @@ export default function GetInvolvedPage() {
             Festival updates, programme announcements, and ticket alerts.
           </p>
           <form className="mt-6 flex flex-col gap-4 sm:flex-row" action="/api/newsletter" method="post">
+            <div className="hidden" aria-hidden="true">
+              <label htmlFor="newsletter-website">Website</label>
+              <input id="newsletter-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+            </div>
             <label htmlFor="newsletter-email" className="sr-only">
               Email
             </label>
@@ -173,6 +188,7 @@ export default function GetInvolvedPage() {
               placeholder="you@example.com"
               className="flex-1 rounded-[4px] border border-white/20 bg-charcoal px-4 py-2 text-white placeholder:text-white/40 focus:border-brand-yellow focus:outline-none"
             />
+            <TurnstileField siteKey={turnstileSiteKey} />
             <button
               type="submit"
               className="rounded-[4px] bg-brand-yellow px-6 py-3 text-[15px] font-semibold uppercase tracking-[0.04em] text-charcoal"
