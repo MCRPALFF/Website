@@ -45,6 +45,11 @@ export function TicketTable({
           </tr>
         </tfoot>
       </table>
+      {ticketTypes.some((t) => t.id === "sofa") && (
+        <p className="px-4 py-3 text-[13px] leading-relaxed text-white/50">
+          Each sofa seats 2.
+        </p>
+      )}
       {ticketTypes.some((t) => t.id === "low-income") && (
         <p className="px-4 py-3 text-[13px] leading-relaxed text-white/50">
           Low Income tickets are limited. Please only book this rate if you need it,

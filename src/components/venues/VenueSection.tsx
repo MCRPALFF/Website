@@ -12,9 +12,10 @@ export function VenueSection({ venue }: { venue: Venue }) {
 
       {venue.seating && (
         <p className="mt-4 text-sm text-white/70">
-          {venue.seating.total} tickets on sale
-          {venue.seating.standard != null &&
-            ` · ${venue.seating.standard} standard · ${venue.seating.luxury} luxury · ${venue.seating.sofas} sofas · ${venue.seating.lowIncome} low income`}
+          {venue.seating.standard != null && venue.seating.luxury != null && venue.seating.sofas != null
+            ? `${venue.seating.standard + venue.seating.luxury + venue.seating.sofas * 2 + (venue.seating.lowIncome ?? 0)} seats · ${venue.seating.standard} standard · ${venue.seating.luxury} luxury · ${venue.seating.sofas} sofas (${venue.seating.sofas * 2} seats)`
+            : `${venue.seating.total} seats`}
+          {venue.seating.lowIncome != null && ` · ${venue.seating.lowIncome} low income`}
         </p>
       )}
 

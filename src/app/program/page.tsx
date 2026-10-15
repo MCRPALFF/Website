@@ -18,7 +18,7 @@ export default function ProgrammePage() {
     <>
       <PageHero
         title="Programme"
-        subtitle="Browse screenings across three Manchester venues. Filter by date, venue, or genre."
+        subtitle="Three Friday screenings at The Savoy, Heaton Moor, each with a panel discussion."
       />
       <ProgrammeClient items={items} genres={genres} dates={dates} venues={venues} />
     </>

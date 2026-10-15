@@ -18,7 +18,7 @@ function getBadges(screening?: Screening & { venue?: Venue }) {
   if (!screening) return badges;
   if (screening.ticketState === "sold-out") badges.push({ variant: "sold-out", label: "Sold Out" });
   else if (screening.ticketState === "selling-fast") badges.push({ variant: "selling-fast", label: "Selling Fast" });
-  if (screening.qanda) badges.push({ variant: "qanda", label: "Q&A" });
+  if (screening.qanda) badges.push({ variant: "qanda", label: "Panel Discussion" });
   return badges;
 }
 
@@ -117,7 +117,7 @@ export function ScreeningRow({ screening }: { screening: Screening & { venue: Ve
           )}
           {screening.qanda && (
             <Badge variant="qanda" className="mt-2">
-              Q&A
+              Panel Discussion
             </Badge>
           )}
         </div>

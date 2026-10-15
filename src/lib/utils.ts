@@ -59,8 +59,10 @@ export function seatingLabel(screening: {
   if (screening.seating) {
     const { total, standard, luxury, sofas, lowIncome } = screening.seating;
     if (standard != null && luxury != null && sofas != null) {
+      const sofaSeats = sofas * 2;
+      const people = standard + luxury + sofaSeats + (lowIncome ?? 0);
       parts.push(
-        `${total} tickets · ${standard} standard · ${luxury} luxury · ${sofas} sofas${
+        `${people} seats · ${standard} standard · ${luxury} luxury · ${sofas} sofas (${sofaSeats} seats)${
           lowIncome != null ? ` · ${lowIncome} low income` : ""
         }`
       );
